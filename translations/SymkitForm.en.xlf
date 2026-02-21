@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="SymkitForm" date="2026-02-22T00:00:00Z">
+        <header/>
+        <body>
+            <!-- General labels -->
+            <trans-unit id="yes" resname="Yes">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="no" resname="No">
+                <source>No</source>
+            </trans-unit>
+
+            <!-- Actions -->
+            <trans-unit id="form.action.save" resname="form.action.save">
+                <source>Save</source>
+            </trans-unit>
+
+            <!-- Components -->
+            <trans-unit id="form.component.rich_select.placeholder" resname="form.component.rich_select.placeholder">
+                <source>Select an option...</source>
+            </trans-unit>
+            <trans-unit id="form.component.rich_select.search_placeholder" resname="form.component.rich_select.search_placeholder">
+                <source>Search...</source>
+            </trans-unit>
+            <trans-unit id="form.component.checkbox_rich_select.placeholder" resname="form.component.checkbox_rich_select.placeholder">
+                <source>Select...</source>
+            </trans-unit>
+            <trans-unit id="form.component.password_field.placeholder" resname="form.component.password_field.placeholder">
+                <source>Enter a password...</source>
+            </trans-unit>
+
+            <!-- Password rules -->
+            <trans-unit id="form.password.rule.length" resname="form.password.rule.length">
+                <source>At least %min% characters</source>
+            </trans-unit>
+            <trans-unit id="form.password.rule.uppercase" resname="form.password.rule.uppercase">
+                <source>One uppercase letter</source>
+            </trans-unit>
+            <trans-unit id="form.password.rule.number" resname="form.password.rule.number">
+                <source>One number</source>
+            </trans-unit>
+            <trans-unit id="form.password.rule.special" resname="form.password.rule.special">
+                <source>One special character</source>
+            </trans-unit>
+
+            <!-- Table of contents -->
+            <trans-unit id="form.toc.title" resname="form.toc.title">
+                <source>On this page</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,32 @@
+{
+    "name": "symkit/form-bundle",
+    "description": "Symfony bundle for premium form types (Slug, SitemapPriority, IconPicker, ActiveInactive, FormSection), form extensions (RichSelect, Password, Translatable, Url, Dependency, CheckboxRichSelect), Twig components, Tailwind theme and Stimulus",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Symkit\\FormBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Symkit\\FormBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.2",
+        "doctrine/orm": "^3.6",
+        "symfony/framework-bundle": "^7.0 || ^8.0",
+        "symfony/form": "^7.0 || ^8.0",
+        "symfony/string": "^7.0 || ^8.0",
+        "symfony/translation": "^7.0 || ^8.0",
+        "symfony/ux-icons": "2.*",
+        "symfony/ux-live-component": "2.*"
+    },
+    "require-dev": {
+        "nyholm/symfony-bundle-test": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.0",
+        "symfony/asset-mapper": "^7.0 || ^8.0"
+    }
+}
