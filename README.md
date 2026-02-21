@@ -13,11 +13,12 @@ Part of the [SymKit](https://github.com/symkit) ecosystem.
 
 ## Documentation
 
-1. [**Form Types**](docs/form-types.md)
-2. [**Form Extensions**](docs/form-extensions.md)
-3. [**Twig Components**](docs/twig-components.md)
-4. [**Sectioned Forms**](docs/sectioned-forms.md)
-5. [**Theming**](docs/theming.md)
+1. [**Configuration Reference**](docs/configuration.md)
+2. [**Form Types**](docs/form-types.md)
+3. [**Form Extensions**](docs/form-extensions.md)
+4. [**Twig Components**](docs/twig-components.md)
+5. [**Sectioned Forms**](docs/sectioned-forms.md)
+6. [**Theming**](docs/theming.md)
 
 ## Installation
 
@@ -27,17 +28,15 @@ composer require symkit/form-bundle
 
 ## Configuration
 
-All features are enabled by default. You can customize them in `config/packages/symkit_form.yaml`:
+All features are enabled by default. To customize the bundle, see the [Configuration Reference](docs/configuration.md).
+
+Example: disabling specific components:
 
 ```yaml
+# config/packages/symkit_form.yaml
 symkit_form:
-    form_types:
-        slug: true
-        sitemap_priority: true
-        # ...
-    form_extensions:
-        translatable: true
-        # ...
+    components:
+        slug: false
 ```
 
 ### Tailwind Theme
