@@ -1,17 +1,23 @@
 # Symkit Form Bundle
 
-Symfony bundle for premium form types, extensions, Twig live components (RichSelect, Slug, Password, Translatable), Tailwind CSS theme and Stimulus controllers.
+A collection of premium Symfony form types, extensions, and Twig Live Components with Tailwind CSS styling and Stimulus integration.
 
-Part of [SymKit](https://github.com/symkit).
+Part of the [SymKit](https://github.com/symkit) ecosystem.
 
 ## Features
 
-- **Form types**: Slug, SitemapPriority, IconPicker, ActiveInactive, FormSection.
-- **Form extensions**: RichSelect, Password, Translatable, Url, Dependency, CheckboxRichSelect.
-- **Twig components**: RichSelect, PasswordField, TranslatableField, Slug (all Live Components).
-- **Sectioned forms**: card-based layout with sticky navigation.
-- **Tailwind theme**: full dark mode support.
-- **Stimulus controllers**: dependency, dropdown, password-visibility, rich-select, section-nav, slug, table-of-contents, url-preview.
+- **Advanced Form Types**: Slug generation, Icon picking, Sitemap priorities, and Sectioned layouts.
+- **Powerful Extensions**: Translatable fields, Dependent fields (JS-free setup), Rich select inputs, and Password strength meters.
+- **Twig Live Components**: High-performance, reactive UI components for complex form fields.
+- **Tailwind Ready**: Full support for dark mode and responsive design.
+
+## Documentation
+
+1. [**Form Types**](docs/form-types.md)
+2. [**Form Extensions**](docs/form-extensions.md)
+3. [**Twig Components**](docs/twig-components.md)
+4. [**Sectioned Forms**](docs/sectioned-forms.md)
+5. [**Theming**](docs/theming.md)
 
 ## Installation
 
@@ -21,47 +27,130 @@ composer require symkit/form-bundle
 
 ## Configuration
 
-All features are enabled by default. You can disable specific features:
+All features are enabled by default. You can customize them in `config/packages/symkit_form.yaml`:
 
-```php
-// config/packages/symkit_form.php
-return static function (SymfonyComponentDependencyInjectionLoaderConfiguratorContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->extension('symkit_form', [
-        'form_types' => [
-            'slug' => true,
-            'sitemap_priority' => true,
-            'icon_picker' => true,
-            'active_inactive' => true,
-            'form_section' => true,
-        ],
-        'form_extensions' => [
-            'rich_select' => true,
-            'password' => true,
-            'translatable' => true,
-            'url' => true,
-            'dependency' => true,
-            'checkbox_rich_select' => true,
-        ],
-        'components' => [
-            'slug' => true,
-            'rich_select' => true,
-            'password_field' => true,
-            'translatable_field' => true,
-        ],
-    ]);
-};
+```yaml
+symkit_form:
+    form_types:
+        slug: true
+        sitemap_priority: true
+        # ...
+    form_extensions:
+        translatable: true
+        # ...
 ```
 
-## Tailwind Theme
+### Tailwind Theme
 
-To use the Tailwind form theme, add to your Twig config:
+Enable the premium Tailwind form theme in `config/packages/twig.yaml`:
 
 ```yaml
 twig:
-    form_themes: ['@SymkitForm/form/tailwind_layout.html.twig']
+    form_themes:
+        - '@SymkitForm/form/tailwind_layout.html.twig'
 ```
 
-## Contributing
+---
 
-- Quality: `make quality` (cs-check, phpstan, tests)
-- Tests: `vendor/bin/phpunit`
+## Form Types
+
+### `SlugType`
+Automatically generates a slug from another field.
+
+```php
+$builder->add('title', TextType::class);
+$builder->add('slug', SlugType::class, [
+    'target' => 'title', // The field to watch
+    'unique' => true,    // AJAX uniqueness check
+]);
+```
+
+### `FormSectionType`
+Groups fields into card-style sections.
+
+```php
+$builder->add('general', FormSectionType::class, [
+    'label' => 'General Info',
+    'icon' => 'heroicons:user-20-solid',
+]);
+// Fields added after this will be grouped until the next section
+```
+
+### `IconPickerType`
+A visual picker for Heroicons. 
+
+```php
+$builder->add('icon', IconPickerType::class);
+```
+
+---
+
+## Form Extensions
+
+### `TranslatableExtension`
+Adds multi-locale support to `TextType` and `TextareaType`.
+
+```php
+$builder->add('description', TextType::class, [
+    'translatable' => true,
+]);
+```
+
+### `RichSelectExtension`
+Enhances `ChoiceType` with searching and icons.
+
+```php
+$builder->add('category', ChoiceType::class, [
+    'rich_select' => true,
+    'searchable' => true,
+    'choice_icons' => [
+        'Value' => 'heroicons:tag-20-solid',
+    ],
+]);
+```
+
+### `DependencyExtension`
+Conditionally show/hide fields based on other field values.
+
+```php
+$builder->add('type', ChoiceType::class, [
+     'choices' => ['External' => 'ext', 'Internal' => 'int'],
+]);
+
+$builder->add('url', UrlType::class, [
+    'depends_on' => [
+        'field' => 'type',
+        'value' => 'ext',
+    ],
+]);
+```
+
+---
+
+## Twig Live Components
+
+These components are automatically used by form extensions but can be used standalone:
+
+### `RichSelect`
+Reactive search and selection for huge lists.
+
+### `PasswordField`
+Real-time password strength validation.
+
+### `TranslatableField`
+Tabbed interface for multi-language input.
+
+---
+
+## Stimulus Controllers
+
+Register the controllers in your `assets/bootstrap.js` (or via AssetMapper):
+
+- `form--slug`
+- `form--rich-select`
+- `form--dropdown`
+- `form--password-visibility`
+- `form--section-nav`
+- `form--dependency`
+
+Refer to `assets/controllers/` for implementation details.
