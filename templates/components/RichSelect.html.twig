@@ -26,7 +26,7 @@
         {% if not required and value is not empty %}
         <button type="button"
             class="p-1 text-gray-400 hover:text-gray-600 focus:outline-none dark:hover:text-gray-300 mr-1 pointer-events-auto"
-            data-action="click->form--rich-select#unselect:stop" aria-label="Clear selection">
+            data-action="click->form--rich-select#unselect:stop" aria-label="{{ 'form.component.rich_select.clear_selection'|trans({}, 'SymkitForm') }}">
             <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
@@ -99,7 +99,7 @@
             </li>
             {% else %}
             <li class="relative cursor-default select-none py-2 px-3 text-gray-500 italic">
-                No results found
+                {{ 'form.component.rich_select.no_results'|trans({}, 'SymkitForm') }}
             </li>
             {% endfor %}
         </ul>

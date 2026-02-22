@@ -17,7 +17,7 @@
                 data-action="live#action"
                 data-live-action-param="toggleLock"
                 class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 cursor-pointer focus:outline-none"
-                title="{{ isLocked ? 'Unlock to edit' : 'Lock to sync with name' }}">
+                title="{{ (isLocked ? 'form.component.slug.unlock_title' : 'form.component.slug.lock_title')|trans({}, 'SymkitForm') }}">
                 
                 {% if isLocked %}
                     {{ ux_icon('heroicons:lock-closed-20-solid', { class: 'size-4' }) }}

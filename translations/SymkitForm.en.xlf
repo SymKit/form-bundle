@@ -29,6 +29,23 @@
             <trans-unit id="form.component.password_field.placeholder" resname="form.component.password_field.placeholder">
                 <source>Enter a password...</source>
             </trans-unit>
+            <trans-unit id="form.component.slug.unlock_title" resname="form.component.slug.unlock_title">
+                <source>Unlock to edit</source>
+            </trans-unit>
+            <trans-unit id="form.component.slug.lock_title" resname="form.component.slug.lock_title">
+                <source>Lock to sync with name</source>
+            </trans-unit>
+            <trans-unit id="form.component.rich_select.clear_selection" resname="form.component.rich_select.clear_selection">
+                <source>Clear selection</source>
+            </trans-unit>
+            <trans-unit id="form.component.rich_select.no_results" resname="form.component.rich_select.no_results">
+                <source>No results found</source>
+            </trans-unit>
+
+            <!-- Link -->
+            <trans-unit id="form.link.open_new_window" resname="form.link.open_new_window">
+                <source>Open link in new window</source>
+            </trans-unit>
 
             <!-- Password rules -->
             <trans-unit id="form.password.rule.length" resname="form.password.rule.length">
