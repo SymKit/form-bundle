@@ -27,6 +27,26 @@
         "nyholm/symfony-bundle-test": "^3.0",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.0",
-        "symfony/asset-mapper": "^7.0 || ^8.0"
+        "symfony/asset-mapper": "^7.0 || ^8.0",
+        "symkit/bundle-ai-kit": "^0.0.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "symkit/bundle-ai-kit": true
+        }
+    },
+    "extra": {
+        "bundle-ai-kit": {
+            "editors": [
+                "cursor"
+            ],
+            "skills": [
+                "symfony-bundle-core",
+                "symfony-bundle-ux",
+                "symfony-bundle-doctrine",
+                "symfony-bundle-flex",
+                "symfony-bundle-quality"
+            ]
+        }
     }
 }
