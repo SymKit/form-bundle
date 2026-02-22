@@ -42,4 +42,20 @@ final class UrlExtensionTest extends TypeTestCase
         $view = $form->createView();
         $this->assertFalse($view->vars['link_button']);
     }
+
+    public function testInvalidOptionsTypes(): void
+    {
+        $invalidOptions = [
+            ['link_button' => 'not_a_bool'],
+        ];
+
+        foreach ($invalidOptions as $options) {
+            try {
+                $this->factory->create(UrlType::class, null, $options);
+                $this->fail('Expected InvalidOptionsException for '.key($options));
+            } catch (\Symfony\Component\OptionsResolver\Exception\InvalidOptionsException $e) {
+                $this->assertTrue(true);
+            }
+        }
+    }
 }

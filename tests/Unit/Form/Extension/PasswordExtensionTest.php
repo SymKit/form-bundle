@@ -59,4 +59,24 @@ final class PasswordExtensionTest extends TypeTestCase
         $this->assertSame(12, $view->vars['min_length']);
         $this->assertFalse($view->vars['require_uppercase']);
     }
+
+    public function testInvalidOptionsTypes(): void
+    {
+        $invalidOptions = [
+            ['show_strength' => 'not_a_bool'],
+            ['min_length' => 'not_an_int'],
+            ['require_uppercase' => 'not_a_bool'],
+            ['require_numbers' => 'not_a_bool'],
+            ['require_special' => 'not_a_bool'],
+        ];
+
+        foreach ($invalidOptions as $options) {
+            try {
+                $this->factory->create(PasswordType::class, null, $options);
+                $this->fail('Expected InvalidOptionsException for '.key($options));
+            } catch (\Symfony\Component\OptionsResolver\Exception\InvalidOptionsException $e) {
+                $this->assertTrue(true);
+            }
+        }
+    }
 }

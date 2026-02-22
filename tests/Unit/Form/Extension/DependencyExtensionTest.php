@@ -32,6 +32,23 @@ final class DependencyExtensionTest extends TestCase
         self::assertNull($options['dependency_icon']);
     }
 
+    public function testConfigureOptionsAcceptsValidTypes(): void
+    {
+        $extension = new DependencyExtension();
+        $resolver = new OptionsResolver();
+        $extension->configureOptions($resolver);
+
+        $options = $resolver->resolve([
+            'dependency_group' => 'group1',
+            'dependency_label' => 'label1',
+            'dependency_icon' => 'icon1',
+        ]);
+
+        self::assertSame('group1', $options['dependency_group']);
+        self::assertSame('label1', $options['dependency_label']);
+        self::assertSame('icon1', $options['dependency_icon']);
+    }
+
     public function testBuildViewAddsControllerAttributeForRootForm(): void
     {
         $extension = new DependencyExtension();
@@ -54,7 +71,7 @@ final class DependencyExtensionTest extends TestCase
     {
         $extension = new DependencyExtension();
         $view = new FormView();
-        $view->vars['attr'] = ['data-controller' => 'existing'];
+        $view->vars['attr'] = ['data-controller' => ' existing '];
 
         $form = $this->createMock(FormInterface::class);
         $form->method('isRoot')->willReturn(true);
@@ -65,8 +82,7 @@ final class DependencyExtensionTest extends TestCase
             'dependency_icon' => null,
         ]);
 
-        self::assertStringContainsString('existing', $view->vars['attr']['data-controller']);
-        self::assertStringContainsString('form--dependency', $view->vars['attr']['data-controller']);
+        self::assertSame('existing  form--dependency', $view->vars['attr']['data-controller']);
     }
 
     public function testBuildViewReturnsEarlyWhenNoDependencyGroup(): void

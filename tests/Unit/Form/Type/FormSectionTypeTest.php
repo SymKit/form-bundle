@@ -41,4 +41,23 @@ final class FormSectionTypeTest extends TypeTestCase
         $this->assertSame('A nice section', $view->vars['section_description']);
         $this->assertTrue($view->vars['section_full_width']);
     }
+
+    public function testInvalidOptionsTypes(): void
+    {
+        $invalidOptions = [
+            ['section' => 123],               // expected string or null
+            ['section_icon' => 123],          // expected string or null
+            ['section_description' => 123],   // expected string or null
+            ['section_full_width' => 'yes'],  // expected bool
+        ];
+
+        foreach ($invalidOptions as $options) {
+            try {
+                $this->factory->create(FormSectionType::class, null, $options);
+                $this->fail('Expected InvalidOptionsException for '.key($options));
+            } catch (\Symfony\Component\OptionsResolver\Exception\InvalidOptionsException $e) {
+                $this->assertTrue(true);
+            }
+        }
+    }
 }

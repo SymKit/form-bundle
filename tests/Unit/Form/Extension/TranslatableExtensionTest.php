@@ -14,7 +14,7 @@ final class TranslatableExtensionTest extends TypeTestCase
     protected function getTypeExtensions(): array
     {
         return [
-            new TranslatableExtension('en', ['fr', 'de']),
+            new TranslatableExtension('en', ['en', 'fr', 'de']),
         ];
     }
 
@@ -31,7 +31,7 @@ final class TranslatableExtensionTest extends TypeTestCase
 
         $this->assertFalse($options['translatable']);
         // locales should be unique merge of defaultLocale and enabledLocales
-        $this->assertSame(['en', 'fr', 'de'], $options['locales']);
+        $this->assertSame(['en', 'fr', 'de'], array_values($options['locales']));
 
         $view = $form->createView();
         $this->assertNotContains('translatable_field', $view->vars['block_prefixes']);
@@ -48,6 +48,23 @@ final class TranslatableExtensionTest extends TypeTestCase
 
         $this->assertContains('translatable_field', $view->vars['block_prefixes']);
         $this->assertTrue($view->vars['translatable']);
-        $this->assertSame(['en', 'fr', 'de'], $view->vars['locales']);
+        $this->assertSame(['en', 'fr', 'de'], array_values($view->vars['locales']));
+    }
+
+    public function testInvalidOptionsTypes(): void
+    {
+        $invalidOptions = [
+            ['translatable' => 'not_a_bool'],
+            ['locales' => 'not_an_array'],
+        ];
+
+        foreach ($invalidOptions as $options) {
+            try {
+                $this->factory->create(TextType::class, null, $options);
+                $this->fail('Expected InvalidOptionsException for '.key($options));
+            } catch (\Symfony\Component\OptionsResolver\Exception\InvalidOptionsException $e) {
+                $this->assertTrue(true);
+            }
+        }
     }
 }

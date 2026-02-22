@@ -29,8 +29,10 @@ final class CheckboxRichSelectExtensionTest extends TypeTestCase
 
         $this->assertContains('rich_checkbox', $view->vars['block_prefixes']);
         $this->assertSame(['Yes' => 1, 'No' => 0], $view->vars['choices_data']);
-        $this->assertArrayHasKey(1, $view->vars['choice_icons']);
-        $this->assertArrayHasKey(0, $view->vars['choice_icons']);
+        $this->assertSame([
+            1 => ['name' => 'heroicons:check-20-solid', 'class' => 'text-green-500'],
+            0 => ['name' => 'heroicons:x-mark-20-solid', 'class' => 'text-red-500'],
+        ], $view->vars['choice_icons']);
         $this->assertFalse($view->vars['searchable']);
         $this->assertSame('form.component.checkbox_rich_select.placeholder', $view->vars['placeholder']);
     }

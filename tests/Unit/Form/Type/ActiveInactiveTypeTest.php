@@ -24,8 +24,10 @@ final class ActiveInactiveTypeTest extends TypeTestCase
         $this->assertSame('form.type.active_inactive.label', $options['label']);
         $this->assertEquals(['form.type.active_inactive.choice.active' => true, 'form.type.active_inactive.choice.inactive' => false], $options['choices']);
         $this->assertFalse($options['searchable']);
-        $this->assertArrayHasKey(true, $options['choice_icons']);
-        $this->assertArrayHasKey(false, $options['choice_icons']);
+        $this->assertSame([
+            true => ['name' => 'heroicons:check-20-solid', 'class' => 'text-green-500'],
+            false => ['name' => 'heroicons:x-mark-20-solid', 'class' => 'text-red-500'],
+        ], $options['choice_icons']);
     }
 
     public function testSubmitValidData(): void

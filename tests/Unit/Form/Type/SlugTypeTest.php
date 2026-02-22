@@ -170,4 +170,52 @@ final class SlugTypeTest extends TestCase
 
         $type->finishView($view, $form, ['target' => 'nonexistent']);
     }
+
+    public function testBuildViewWithNullParent(): void
+    {
+        $type = new SlugType();
+        $view = new FormView();
+
+        $form = $this->createMock(FormInterface::class);
+        $form->method('getParent')->willReturn(null);
+
+        $type->buildView($view, $form, [
+            'target' => 'title',
+            'locked' => true,
+            'unique' => false,
+            'entity_class' => null,
+            'slug_field' => 'slug',
+            'repository_method' => null,
+        ]);
+
+        self::assertNull($view->vars['entity_id']);
+        self::assertNull($view->vars['target_value']);
+    }
+
+    public function testInvalidOptionsTypes(): void
+    {
+        $resolver = new OptionsResolver();
+        $type = new SlugType();
+        $type->configureOptions($resolver);
+
+        $invalidOptions = [
+            ['target' => 123],
+            ['locked' => 'yes'],
+            ['unique' => 'yes'],
+            ['entity_class' => 123],
+            ['slug_field' => 123],
+            ['repository_method' => 123],
+        ];
+
+        foreach ($invalidOptions as $options) {
+            try {
+                // merge with required valid defaults to just test the invalid option
+                $data = array_merge(['target' => 'title'], $options);
+                $resolver->resolve($data);
+                $this->fail('Expected InvalidOptionsException for '.key($options));
+            } catch (\Symfony\Component\OptionsResolver\Exception\InvalidOptionsException $e) {
+                $this->assertTrue(true);
+            }
+        }
+    }
 }
