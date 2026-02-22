@@ -8,7 +8,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-/** Service registration is done in FormBundle::loadExtension(); Symfony UX requires this attribute for template and live metadata. */
+/** Service registration and live/template metadata are also configured in FormBundle::loadExtension(); AsLiveComponent is required by symfony/ux-live-component for Live detection. */
 #[AsLiveComponent('PasswordField', template: '@SymkitForm/components/PasswordField.html.twig')]
 final class PasswordField
 {

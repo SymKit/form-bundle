@@ -15,8 +15,3 @@ grumphp:
             scripts:
                 - ['-c', 'make infection']
             triggered_by: [php]
-        infection:
-            min_msi: 70
-            min_covered_msi: 70
-            only_covered: true
-            threads: 4

@@ -106,18 +106,15 @@ final class FormBundle extends AbstractBundle
 
         if ($components['rich_select']) {
             $services->set(RichSelect::class)->autowire()->autoconfigure()
-                ->tag('twig.component', ['key' => 'RichSelect'])
-                ->tag('ux.live_component');
+                ->tag('twig.component', ['key' => 'RichSelect']);
         }
         if ($components['password_field']) {
             $services->set(PasswordField::class)->autowire()->autoconfigure()
-                ->tag('twig.component', ['key' => 'PasswordField'])
-                ->tag('ux.live_component');
+                ->tag('twig.component', ['key' => 'PasswordField']);
         }
         if ($components['translatable_field']) {
             $services->set(TranslatableField::class)->autowire()->autoconfigure()
-                ->tag('twig.component', ['key' => 'TranslatableField'])
-                ->tag('ux.live_component');
+                ->tag('twig.component', ['key' => 'TranslatableField']);
         }
 
         if ($formExt['translatable']) {
@@ -143,8 +140,7 @@ final class FormBundle extends AbstractBundle
         }
         if ($components['slug']) {
             $services->set(Slug::class)->autowire()->autoconfigure()
-                ->tag('twig.component', ['key' => 'Slug'])
-                ->tag('ux.live_component');
+                ->tag('twig.component', ['key' => 'Slug']);
         }
     }
 
