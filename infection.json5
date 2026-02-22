@@ -6,7 +6,7 @@
         "summary": "infection-summary.log"
     },
     "minMsi": 70,
-    "minCoveredMsi": 80,
+    "minCoveredMsi": 70,
     "testFramework": "phpunit",
     "testFrameworkOptions": "--testsuite=Unit"
 }

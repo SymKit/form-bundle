@@ -1,14 +1,10 @@
-.PHONY: help install test phpstan cs-fix cs-check infection deptrac quality security-check lint ci install-hooks
+.PHONY: help install test phpstan cs-fix cs-check infection deptrac quality security-check lint ci
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 install: ## Install dependencies
 	composer install
-
-install-hooks: ## Install git hooks
-	cp scripts/git-hooks/commit-msg .git/hooks/commit-msg
-	chmod +x .git/hooks/commit-msg
 
 test: ## Run PHPUnit tests
 	vendor/bin/phpunit
@@ -29,9 +25,10 @@ deptrac: ## Architecture enforcement
 	vendor/bin/deptrac analyse
 
 security-check: ## Dependency security audit
-	composer audit
+	composer audit --abandoned=report
 
-lint: ## Lint config files
+lint: ## Lint config and composer
+	composer validate --strict
 	@test -d config && find config -name '*.xml' -exec xmllint --noout {} + 2>/dev/null || true
 	@test -f vendor/bin/console && vendor/bin/console lint:yaml config/ --parse-tags 2>/dev/null || true
 	@test -f vendor/bin/console && vendor/bin/console lint:xliff translations/ 2>/dev/null || true
