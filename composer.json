@@ -29,10 +29,10 @@
         "phpro/grumphp": "^2.0",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^11.0",
-        "deptrac/deptrac": "^2.0",
         "symfony/asset-mapper": "^7.0 || ^8.0",
         "symkit/bundle-ai-kit": "^0.0.6",
-        "doctrine/orm": "^3.6"
+        "doctrine/orm": "^3.6",
+        "deptrac/deptrac": "^2.0"
     },
     "suggest": {
         "doctrine/orm": "Required for slug uniqueness checks in SlugType and Slug Twig component (^3.6)"

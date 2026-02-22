@@ -8,8 +8,9 @@ grumphp:
             config: .php-cs-fixer.dist.php
         phpunit:
             config_file: phpunit.xml.dist
-        deptrac:
-            depfile: deptrac.yaml
+        shell:
+            scripts:
+                deptrac: ["./scripts/deptrac.sh"]
         infection:
             min_msi: 70
             min_covered_msi: 75
