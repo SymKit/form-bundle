@@ -13,10 +13,10 @@ final class SitemapPriorityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'Sitemap Priority',
+            'label' => 'form.type.sitemap_priority.label',
             'choices' => $this->getPriorityChoices(),
             'searchable' => false,
-            'placeholder' => 'Default priority (0.5)',
+            'placeholder' => 'form.type.sitemap_priority.placeholder',
         ]);
     }
 

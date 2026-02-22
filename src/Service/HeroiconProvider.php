@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Symkit\FormBundle\Service;
 
-final class HeroiconProvider
+use Symkit\FormBundle\Contract\IconProviderInterface;
+
+final readonly class HeroiconProvider implements IconProviderInterface
 {
     private const array BASE_ICONS = [
         'academic-cap',

@@ -31,11 +31,16 @@ final class TranslatableExtension extends AbstractTypeExtension
             return;
         }
 
-        if (!\in_array('translatable_field', $view->vars['block_prefixes'], true)) {
-            $view->vars['block_prefixes'][] = 'translatable_field';
+        /** @var array<string> $prefixes */
+        $prefixes = $view->vars['block_prefixes'];
+        if (!\in_array('translatable_field', $prefixes, true)) {
+            $prefixes[] = 'translatable_field';
+            $view->vars['block_prefixes'] = $prefixes;
         }
         $view->vars['translatable'] = true;
-        $view->vars['locales'] = $options['locales'];
+        /** @var array<string> $locales */
+        $locales = $options['locales'];
+        $view->vars['locales'] = $locales;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

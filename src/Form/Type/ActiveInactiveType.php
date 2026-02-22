@@ -13,10 +13,10 @@ final class ActiveInactiveType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'label' => 'Status',
+            'label' => 'form.type.active_inactive.label',
             'choices' => [
-                'Active' => true,
-                'Inactive' => false,
+                'form.type.active_inactive.choice.active' => true,
+                'form.type.active_inactive.choice.inactive' => false,
             ],
             'choice_icons' => [
                 true => [

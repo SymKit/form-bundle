@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symkit\FormBundle\Form\Extension\RichSelectExtension;
 
 final class RichSelectExtensionTest extends TestCase

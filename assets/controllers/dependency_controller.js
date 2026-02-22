@@ -8,6 +8,10 @@ export default class extends Controller {
         this.updateVisibility();
     }
 
+    disconnect() {
+        // Nothing to explicitly block or disconnect
+    }
+
     switch(event) {
         const fieldName = event.currentTarget.dataset.dependencyField;
         const groupName = event.currentTarget.dataset.dependencyGroup;
@@ -48,7 +52,6 @@ export default class extends Controller {
         const input = row.querySelector('input:not([type="hidden"]), input[data-model="value"], select, textarea');
 
         if (input) {
-            console.log('Clearing field value:', input.name);
             input.value = '';
 
             // Trigger events for Live Components and other listeners

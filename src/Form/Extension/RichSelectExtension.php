@@ -19,7 +19,10 @@ final class RichSelectExtension extends AbstractTypeExtension
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
-        $view->vars['block_prefixes'][] = 'rich_select';
+        /** @var array<string> $prefixes */
+        $prefixes = $view->vars['block_prefixes'];
+        $prefixes[] = 'rich_select';
+        $view->vars['block_prefixes'] = $prefixes;
 
         $view->vars['searchable'] = $options['searchable'];
         $view->vars['choice_icons'] = $options['choice_icons'];

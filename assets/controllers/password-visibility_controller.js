@@ -1,7 +1,12 @@
 import { Controller } from '@hotwired/stimulus';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ['input', 'iconShow', 'iconHide'];
+
+    disconnect() {
+        // Nothing to disconnect explicitly here
+    }
 
     toggle() {
         if (this.inputTarget.type === 'password') {

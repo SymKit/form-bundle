@@ -8,6 +8,7 @@ use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Symkit\FormBundle\Contract\IconProviderInterface;
 use Symkit\FormBundle\Form\Extension\CheckboxRichSelectExtension;
 use Symkit\FormBundle\Form\Extension\DependencyExtension;
 use Symkit\FormBundle\Form\Extension\PasswordExtension;
@@ -77,6 +78,8 @@ final class FormBundle extends AbstractBundle
         $components = $config['components'];
 
         $services->set(HeroiconProvider::class);
+        $services->alias(IconProviderInterface::class, HeroiconProvider::class);
+        $services->alias('form_bundle.heroicon_provider', HeroiconProvider::class)->public();
 
         if ($formTypes['active_inactive']) {
             $services->set(ActiveInactiveType::class)->tag('form.type');

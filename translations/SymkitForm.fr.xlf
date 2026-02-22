@@ -60,6 +60,32 @@
                 <source>form.toc.title</source>
                 <target>Sur cette page</target>
             </trans-unit>
+
+            <!-- Types -->
+            <trans-unit id="form.type.icon_picker.placeholder" resname="form.type.icon_picker.placeholder">
+                <source>form.type.icon_picker.placeholder</source>
+                <target>Sélectionner une icône...</target>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.label" resname="form.type.active_inactive.label">
+                <source>form.type.active_inactive.label</source>
+                <target>Statut</target>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.choice.active" resname="form.type.active_inactive.choice.active">
+                <source>form.type.active_inactive.choice.active</source>
+                <target>Actif</target>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.choice.inactive" resname="form.type.active_inactive.choice.inactive">
+                <source>form.type.active_inactive.choice.inactive</source>
+                <target>Inactif</target>
+            </trans-unit>
+            <trans-unit id="form.type.sitemap_priority.label" resname="form.type.sitemap_priority.label">
+                <source>form.type.sitemap_priority.label</source>
+                <target>Priorité Sitemap</target>
+            </trans-unit>
+            <trans-unit id="form.type.sitemap_priority.placeholder" resname="form.type.sitemap_priority.placeholder">
+                <source>form.type.sitemap_priority.placeholder</source>
+                <target>Priorité par défaut (0.5)</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

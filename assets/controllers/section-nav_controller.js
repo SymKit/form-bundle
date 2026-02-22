@@ -6,6 +6,7 @@ import { Controller } from '@hotwired/stimulus';
  * - Highlighting active section in nav based on scroll position
  * - Smooth scrolling when clicking nav links
  */
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ['navList', 'navLink', 'section'];
 

@@ -18,7 +18,10 @@ final class CheckboxRichSelectExtension extends AbstractTypeExtension
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
-        $view->vars['block_prefixes'][] = 'rich_checkbox';
+        /** @var array<string> $prefixes */
+        $prefixes = $view->vars['block_prefixes'];
+        $prefixes[] = 'rich_checkbox';
+        $view->vars['block_prefixes'] = $prefixes;
 
         $view->vars['choices_data'] = [
             'Yes' => 1,
@@ -37,6 +40,6 @@ final class CheckboxRichSelectExtension extends AbstractTypeExtension
         ];
 
         $view->vars['searchable'] = false;
-        $view->vars['placeholder'] = 'Select...';
+        $view->vars['placeholder'] = 'form.component.checkbox_rich_select.placeholder';
     }
 }

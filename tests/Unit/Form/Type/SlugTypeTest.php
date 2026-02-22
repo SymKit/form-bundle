@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symkit\FormBundle\Tests\Unit\Form\Type;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
@@ -164,7 +165,7 @@ final class SlugTypeTest extends TestCase
         $form = $this->createMock(FormInterface::class);
         $form->method('getName')->willReturn('slug');
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('targets "nonexistent"');
 
         $type->finishView($view, $form, ['target' => 'nonexistent']);

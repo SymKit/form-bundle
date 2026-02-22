@@ -19,7 +19,10 @@ final class PasswordExtension extends AbstractTypeExtension
 
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
-        $view->vars['block_prefixes'][] = 'password_premium';
+        /** @var array<string> $prefixes */
+        $prefixes = $view->vars['block_prefixes'];
+        $prefixes[] = 'password_premium';
+        $view->vars['block_prefixes'] = $prefixes;
 
         $view->vars['show_strength'] = $options['show_strength'];
         $view->vars['min_length'] = $options['min_length'];

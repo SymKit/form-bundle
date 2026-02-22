@@ -48,6 +48,26 @@
             <trans-unit id="form.toc.title" resname="form.toc.title">
                 <source>On this page</source>
             </trans-unit>
+
+            <!-- Types -->
+            <trans-unit id="form.type.icon_picker.placeholder" resname="form.type.icon_picker.placeholder">
+                <source>Select an icon...</source>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.label" resname="form.type.active_inactive.label">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.choice.active" resname="form.type.active_inactive.choice.active">
+                <source>Active</source>
+            </trans-unit>
+            <trans-unit id="form.type.active_inactive.choice.inactive" resname="form.type.active_inactive.choice.inactive">
+                <source>Inactive</source>
+            </trans-unit>
+            <trans-unit id="form.type.sitemap_priority.label" resname="form.type.sitemap_priority.label">
+                <source>Sitemap Priority</source>
+            </trans-unit>
+            <trans-unit id="form.type.sitemap_priority.placeholder" resname="form.type.sitemap_priority.placeholder">
+                <source>Default priority (0.5)</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

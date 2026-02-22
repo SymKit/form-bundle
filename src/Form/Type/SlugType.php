@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symkit\FormBundle\Form\Type;
 
+use InvalidArgumentException;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
@@ -66,7 +67,7 @@ final class SlugType extends AbstractType
             if (isset($view->parent->children[$target])) {
                 $view->vars['target_id'] = $view->parent->children[$target]->vars['id'];
             } else {
-                throw new \InvalidArgumentException(\sprintf('The field "%s" targets "%s", but that field was not found in the parent form. Check your form definition.', $form->getName(), $target));
+                throw new InvalidArgumentException(\sprintf('The field "%s" targets "%s", but that field was not found in the parent form. Check your form definition.', $form->getName(), $target));
             }
         }
     }

@@ -1,7 +1,12 @@
 import { Controller } from '@hotwired/stimulus';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ["input", "button"];
+
+    disconnect() {
+        // Nothing to explicitly disconnect here
+    }
 
     connect() {
         this.check();

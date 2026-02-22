@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Symkit\FormBundle\Twig\Component;
 
 use Doctrine\Persistence\ManagerRegistry;
+use InvalidArgumentException;
+use RuntimeException;
+use Stringable;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
@@ -139,10 +142,13 @@ final class Slug
 
         if ($this->repositoryMethod) {
             if (!method_exists($repository, $this->repositoryMethod)) {
-                throw new \InvalidArgumentException(\sprintf('Method "%s" not found in repository "%s".', $this->repositoryMethod, $repository::class));
+                throw new InvalidArgumentException(\sprintf('Method "%s" not found in repository "%s".', $this->repositoryMethod, $repository::class));
             }
 
-            return $repository->{$this->repositoryMethod}($slug, $this->entityId);
+            /** @var string|int|float|bool|Stringable|null $result */
+            $result = $repository->{$this->repositoryMethod}($slug, $this->entityId);
+
+            return (string) $result;
         }
 
         if (!$repository instanceof \Doctrine\ORM\EntityRepository) {
@@ -154,7 +160,7 @@ final class Slug
 
         while (true) {
             if ($counter > self::MAX_UNIQUENESS_ATTEMPTS) {
-                throw new \RuntimeException(\sprintf('Unable to generate a unique slug after %d attempts for "%s".', self::MAX_UNIQUENESS_ATTEMPTS, $originalSlug));
+                throw new RuntimeException(\sprintf('Unable to generate a unique slug after %d attempts for "%s".', self::MAX_UNIQUENESS_ATTEMPTS, $originalSlug));
             }
 
             $qb = $repository->createQueryBuilder('e')

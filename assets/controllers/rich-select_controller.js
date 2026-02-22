@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import { getComponent } from '@symfony/ux-live-component';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ['trigger', 'menu', 'searchInput', 'option', 'hiddenInput'];
 

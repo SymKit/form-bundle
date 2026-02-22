@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import { useTransition } from 'stimulus-use';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ["menu", "button"];
 
@@ -15,6 +16,12 @@ export default class extends Controller {
             leaveTo: 'transform opacity-0 scale-95',
             hiddenClass: 'hidden',
         });
+    }
+
+    disconnect() {
+        if (this.leave) {
+            this.leave();
+        }
     }
 
     toggle() {
